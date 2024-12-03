@@ -1,0 +1,24 @@
+header {
+    height: 7vh;
+    background-color: red;
+    outline: solid black 1px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sprite-box {
+    margin-top: 7vh;
+    width: 40vw;
+    height: 40vw;
+
+    background-color: aquamarine;
+    border: solid black 1px;
+    outline: solid grey 3px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
