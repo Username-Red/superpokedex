@@ -14,7 +14,7 @@ async function loadTemplate(path) {
 }
 
 // function to dynamically load the header and footer into a page
-export async function loadHeaderFooter() {
+export async function loadHeaderFooter(callback) {
   const headerTemplate = await loadTemplate("partials/header.html");
   const headerElement = document.querySelector("#main-header");
   const footerTemplate = await loadTemplate("partials/footer.html");
@@ -22,6 +22,10 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+
+  if (callback) {
+    callback();
+  }
 }
 
 function capitalize(word) {
@@ -129,4 +133,28 @@ export function capture() {
 export function captureBtn() {
   const capBtn = document.querySelector(".capture-btn");
   capBtn.addEventListener("click", capture);
+}
+
+
+export function search() {
+  const searchBar = document.querySelector(".searchBar");
+  const searchPkmn = searchBar.value.trim()
+  giveSprite(searchPkmn);
+  getDesc(searchPkmn);
+}
+
+export function searchbarActivate() {
+  const searchBar = document.querySelector(".searchBar");
+  
+  if (!searchBar) {
+    console.error("Search bar element not found!");
+    return;
+  }
+
+  searchBar.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      window.location.href = "/index.html"
+      search(searchBar); // Pass the searchBar element to the search function
+    }
+  });
 }

@@ -1,24 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&family=Share+Tech+Mono&display=swap');
+
+body {
+    font-family: "Share Tech Mono", Courier, monospace;
+    margin: 0 auto;
+    background-color: red;
+}
+
 header {
-    height: 7vh;
+    height: 10vh;
     background-color: red;
     outline: solid black 1px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .header-links {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 30vw;
 }
+
+ul {
+    list-style-type: none;
+    
+}
+
+li {
+    width: 7vw;
+    height: 40px;
+    text-align: center;
+    background-color: white;
+    border: solid black 2px;
+    border-radius: 5px;
+}
+
+li:hover {
+    
+    background-color: lightblue;
+    color: white;
+}
+
+.header-links li a {
+    display: block; 
+    text-align: center; 
+    line-height: 40px;
+    font-size: 1.5vw;
+    text-decoration: none;
+    color: black;
+}
+
+.header-links li a:hover {
+    color: white;
+}
+
+.pokeball-icon {
+    height: 6vh;
+    align-self: left;
+}
+
+.searchBar {
+    height: 4vh;
+    font-size: 3vh;
+}
+
+
+/* ||POKEDEX CSS|| */
 
 .sprite-box {
     margin-top: 7vh;
     width: 40vw;
     height: 40vw;
 
-    background-color: aquamarine;
+    background-color: lightblue;
     border: solid black 1px;
     outline: solid grey 3px;
     
@@ -28,6 +82,27 @@ header {
 .pkmn-img {
     width: 100%;
     height: 100%;
+}
+
+.info-box {
+    display: flex;
+    width: 30vw;
+    height: 5vw;
+    justify-content: space-around;
+    background-color: white;
+    border: solid black 2px;
+    border-radius: 10px;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.info-box p {
+    display: flex;
+    font-size: 3vw;
+    height: 5vw;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .pokedex-main {
@@ -46,6 +121,10 @@ header {
     align-self: center;
 }
 
+.description {
+    font-size: 2vw;
+}
+
 .button-box {
     display: flex;
     justify-content: space-around;
@@ -55,17 +134,18 @@ header {
 }
 
 .capture-btn {
-    background-color: red;
+    background-color: lightblue;
     color: black;
     text-align: center;
     border: solid black 1px;
     border-radius: 10px;
     width: 18vw;
     height: 5vw;
+    font-size: 3vw;
 }
 
 .capture-btn:hover {
-    background-color: rgb(128, 0, 0);
+    background-color: darkblue;
     color: white;
     border: white;
 } 
@@ -78,6 +158,7 @@ header {
     border-radius: 10px;
     width: 18vw;
     height: 5vw;
+    font-size: 2.1vw;
 }
 
 .encounter-btn:hover {
@@ -87,7 +168,7 @@ header {
 } 
 
 
-/* Main layout */
+/* ||BOX CSS||*/
 .box-main {
     text-align: center;
     display: flex;
@@ -95,7 +176,6 @@ header {
     align-items: center;
 }
 
-/* Nav bar styling */
 .nav-bar {
     display: flex;
     justify-content: center;
@@ -104,7 +184,6 @@ header {
     font-size: 1.5rem;
 }
 
-/* Nav bar buttons */
 .nav-bar button {
     background-color: transparent;
     border: none;
@@ -117,14 +196,12 @@ header {
     color: rgb(0, 195, 255);
 }
 
-/* Box number styling */
 .nav-bar h1 {
     margin: 0;
     font-size: 1.8rem;
     font-weight: bold;
 }
 
-/* Pokebox styling */
 .pokebox {
     width: 50vw; 
     height: 40vw; 
@@ -147,7 +224,8 @@ header {
     font-size: 1.2rem;
 }
 
-/* Main container styling */
+
+/* ||TEAM CSS|| */
 .team-main {
     text-align: center;
     display: flex;
@@ -156,14 +234,14 @@ header {
     gap: 20px; /* Space between team-name, team-box, and stats */
 }
 
-/* Team name styling */
+
 .team-name {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-/* Team box styling */
+
 .team-box {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns with fixed width */
@@ -178,7 +256,7 @@ header {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Sprite boxes */
+
 .sprite-box1,
 .sprite-box2,
 .sprite-box3,
@@ -192,7 +270,7 @@ header {
     border: 1px solid #ccc;
 }
 
-/* Stats section styling */
+
 
 .team-box {
     width: 63vw;
