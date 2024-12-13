@@ -86,7 +86,7 @@ li:hover {
 
 .info-box {
     display: flex;
-    width: 30vw;
+    width: 36vw;
     height: 5vw;
     justify-content: space-around;
     background-color: white;
@@ -203,25 +203,32 @@ li:hover {
 }
 
 .pokebox {
-    width: 50vw; 
-    height: 40vw; 
+    width: 80vw; 
+    height: 60vw; 
     border: 2px solid black;
     border-radius: 10px;
     background-color: white;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(6, 1fr);
    
 }
 
-.pokebox ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+@keyframes pkmnUp {
+    25% { transform: scale(1.5, 0.7); } 
+    50% { transform: translateY(-10px); } 
+    100% {transform: translateY(6px)}
 }
 
-.pokebox ul li {
-    font-size: 1.2rem;
+.sprite {
+    position: relative; /* Required for `transform` to work effectively */
+    
+}
+
+.sprite:hover {
+    animation-name: pkmnUp;
+    animation-duration: 0.5s; /* Duration of one animation cycle */
+    animation-timing-function: ease-in-out; /* Smooth animation */
 }
 
 
@@ -244,9 +251,9 @@ li:hover {
 
 .team-box {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns with fixed width */
-    grid-template-rows: repeat(2, 1fr); /* 2 rows with fixed height */
-    gap: 10px; /* Space between grid items */
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 10px;
     justify-content: center;
     align-items: center;
     background-color: #fff;
@@ -257,17 +264,12 @@ li:hover {
 }
 
 
-.sprite-box1,
-.sprite-box2,
-.sprite-box3,
-.sprite-box4,
-.sprite-box5,
-.sprite-box6 {
+.team-box img {
     align-self: center;
     width: 20vw;
     height: 20vw;
     background-color: #e0e0e0;
-    border: 1px solid #ccc;
+    border: 1px solid black;
 }
 
 
@@ -281,6 +283,7 @@ li:hover {
 }
 
 .stats-box {
+    background-color: white;
     outline: solid black 1px;
     width: 60vw;
 }
