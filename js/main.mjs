@@ -12,7 +12,7 @@ import {
 loadHeaderFooter(searchbarActivate)
 initializeLists();
 // getPkmnInfo();
-giveSprite("lugia");
-getDesc("lugia");
+// giveSprite("lugia");
+// getDesc("lugia");
 encounterBtn();
 captureBtn();

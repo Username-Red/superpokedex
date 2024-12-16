@@ -1,5 +1,5 @@
-import { loadHeaderFooter, populateBox } from "./utils.mjs";
+import { loadHeaderFooter, populateBox, searchbarActivate } from "./utils.mjs";
 
-loadHeaderFooter();
+loadHeaderFooter(searchbarActivate);
 
 populateBox();

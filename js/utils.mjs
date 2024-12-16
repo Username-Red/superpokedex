@@ -25,6 +25,10 @@ export async function loadHeaderFooter(callback) {
 
   if (callback) {
     callback();
+    if (window.location.pathname == "/index.html") {
+      search();
+    }
+    
   }
 }
 
@@ -155,27 +159,40 @@ export function captureBtn() {
   capBtn.addEventListener("click", capture);
 }
 
-
 export function search() {
-  const searchBar = document.querySelector(".searchBar");
-  const searchPkmn = searchBar.value.trim()
- 
+  // get the search name from localStorage
+  const searchPkmn = localStorage.getItem("search-name");
   giveSprite(searchPkmn);
   getDesc(searchPkmn);
+  
 }
 
 export function searchbarActivate() {
+  // find the search bar
   const searchBar = document.querySelector(".searchBar");
   
+  // make sure the search bar is there before continuing to avoid errors
   if (!searchBar) {
     console.error("Search bar element not found!");
     return;
   }
 
+  // add an event listener for when the enter button is pushed
   searchBar.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
+      // set data to local storage in case you're on the wrong page
+      const searchName = searchBar.value;
+      localStorage.setItem("search-name", searchName);
+      // check if you're on the right page
+      if (window.location.pathname != "/index.html") {
+        // if you're on the wrong page move to the right page
+        window.location.href = "/index.html"
+      }
+      // or just execute search if you're already there
+      else if (window.location.pathname == "/index.html") {
+        search();
+      }
       
-      search(searchBar); // Pass the searchBar element to the search function
     }
   });
 }
