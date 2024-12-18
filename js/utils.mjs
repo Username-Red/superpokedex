@@ -79,11 +79,11 @@ async function giveSpriteForTeam(pokemonName, imgElement) {
     }
 
     const data = await response.json();
-    imgElement.src = data.sprites.front_default; // Assign the sprite URL
-    imgElement.alt = pokemonName; // Set the alt text for accessibility
+    imgElement.src = data.sprites.front_default; 
+    imgElement.alt = pokemonName; 
   } catch (error) {
     console.error(`Error fetching sprite for ${pokemonName}:`, error.message);
-    imgElement.src = ""; // Placeholder if the sprite fails
+    imgElement.src = ""; 
     imgElement.alt = "Sprite not available";
   }
 }
@@ -101,8 +101,8 @@ export async function getDesc(pokemon) {
 }
 
 function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min); // Ensure min is rounded up
-  max = Math.floor(max); // Ensure max is rounded down
+  min = Math.ceil(min); 
+  max = Math.floor(max); 
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -121,10 +121,10 @@ export function encounterBtn() {
 
 export function initializeLists() {
   if (!localStorage.getItem("team")) {
-    localStorage.setItem("team", JSON.stringify([])); // Team starts empty
+    localStorage.setItem("team", JSON.stringify([])); 
   }
   if (!localStorage.getItem("box")) {
-    localStorage.setItem("box", JSON.stringify([])); // Box starts empty
+    localStorage.setItem("box", JSON.stringify([])); 
   }
 }
 
@@ -134,12 +134,12 @@ function addPokemon(name) {
 
   if (team.length < 6) {
     team.push(name);
-    localStorage.setItem("team", JSON.stringify(team)); // Save the updated team
+    localStorage.setItem("team", JSON.stringify(team));
     console.log(`${name} added to the team!`);
   } 
   else if (team.length >= 6) {
     box.push(name);
-    localStorage.setItem("box", JSON.stringify(box)); // Save the updated team
+    localStorage.setItem("box", JSON.stringify(box)); 
     console.log(`${name} added to the Box!`);
   } else {
     console.log("Some horriffic error has occured");
@@ -250,7 +250,7 @@ export function populateBox() {
 
 export async function getStats() {
   const types = [];
-  let totalHp = 0; // Initialize total HP
+  let totalHp = 0; 
   let totalAtk = 0;
   let totalSpAtk = 0;
   let totalDef = 0;
@@ -334,3 +334,112 @@ export async function getStats() {
     console.error("No element with class 'speed' found!");
   }
 }
+
+export function movePkmn(pkmnListBox) {
+  const pkmnList = document.querySelector(pkmnListBox);
+  // loop through each pokemon in the team and add an event listener to each
+  for (const child of pkmnList.children) {
+    const releaseBtn = document.createElement("button");
+    const moveBtn = document.createElement("button");
+    releaseBtn.className = "release-btn"
+    moveBtn.className = "move-btn"
+    releaseBtn.textContent = "X"
+    moveBtn.textContent = "Move"
+    child.appendChild(releaseBtn);
+    child.appendChild(moveBtn);
+    moveToBox();
+    moveBtn.addEventListener("click", () => {
+      let pkmnName = child.querySelector(".sprite").alt;
+      if (pkmnName != null && pkmnName != "##") {
+        console.log(pkmnName);
+        moveToBox(pkmnName);
+        window.location.reload();
+      }
+      
+    })
+  }
+
+  // if its on the box page, second button should be "move to team"
+  // if its on the team page, it should be "move to box"
+
+  // when a button is pressed, take the pokemon name from its alt attribute, 
+
+  // add it to the other list, 
+  // and then delete it from the original
+}
+
+function removePokemon(pkmnName) {
+  let teamList = JSON.parse(localStorage.getItem("team")) || [];
+ 
+  console.log(pkmnName);
+  
+  const updatedTeamList = teamList.filter((name) => name != pkmnName);
+
+  localStorage.setItem("team", JSON.stringify(updatedTeamList));
+  
+  teamList = JSON.parse(localStorage.getItem("team")) || [];
+ 
+  console.log(teamList);
+}
+
+function moveToBox(pkmnName) {
+  if (pkmnName != null && pkmnName != "##") {
+    let teamList = JSON.parse(localStorage.getItem("team")) || [];
+    let boxList = JSON.parse(localStorage.getItem("box")) || [];
+    console.log(pkmnName);
+    boxList.push(pkmnName);
+    const updatedTeamList = teamList.filter((name) => name != pkmnName);
+    const updatedBoxList = boxList;
+
+    localStorage.setItem("team", JSON.stringify(updatedTeamList));
+    localStorage.setItem("box", JSON.stringify(updatedBoxList));
+
+    teamList = JSON.parse(localStorage.getItem("team")) || [];
+    boxList = JSON.parse(localStorage.getItem("box")) || [];
+    console.log(teamList);
+    console.log(boxList);
+  }
+  
+  
+}
+
+export function changeTitle(titleClass) {
+  // Find the team name element
+  const title = document.querySelector(titleClass);
+  const titleInput = document.querySelector(".invisible"); 
+
+  // When the team name is clicked, show the input box
+  title.addEventListener("click", () => { 
+    title.className = "invisible"
+    titleInput.className = "title-input"
+    titleInput.value = title.textContent.trim(); 
+    titleInput.focus(); 
+  });
+
+  // When Enter is pressed, update the title and hide the input
+  titleInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      localStorage.setItem("teamname", titleInput.value)
+      title.textContent = localStorage.getItem("teamname"); 
+      titleInput.className = "invisible"
+      title.className = "team-name" 
+    }
+  });
+
+
+  titleInput.addEventListener("blur", () => {
+    titleInput.className = "invisible"
+    title.className = "team-name" 
+  });
+}
+
+export function initTeamname(titleName) {
+  if (localStorage.getItem("teamname") != null) {
+    document.querySelector(titleName).textContent = localStorage.getItem("teamname");
+  }
+  else {
+    document.querySelector(titleName).textContent = "Team2"
+  }
+}
+
+

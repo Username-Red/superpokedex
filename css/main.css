@@ -215,20 +215,21 @@ li:hover {
 }
 
 @keyframes pkmnUp {
-    25% { transform: scale(1.5, 0.7); } 
-    50% { transform: translateY(-10px); } 
+    20% {transform: translateY(3px);}
+    20% { transform: scale(1.5, 0.7); } 
+    70% { transform: translateY(-10px); } 
     100% {transform: translateY(6px)}
 }
 
 .sprite {
-    position: relative; /* Required for `transform` to work effectively */
+    position: relative; 
     
 }
 
 .sprite:hover {
     animation-name: pkmnUp;
-    animation-duration: 0.5s; /* Duration of one animation cycle */
-    animation-timing-function: ease-in-out; /* Smooth animation */
+    animation-duration: 0.5s; 
+    animation-timing-function: ease-in-out; 
 }
 
 
@@ -238,7 +239,7 @@ li:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Space between team-name, team-box, and stats */
+    gap: 20px; 
 }
 
 
@@ -246,6 +247,36 @@ li:hover {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+.team-name-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-name {
+    font-size: 5vh;
+    font-weight: bold;
+    margin: 0;
+    top: 2vh;
+    text-align: center;
+}
+
+.invisible {
+    display: none;
+}
+  
+.title-input {
+    font-size: 5vh;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -268,8 +299,6 @@ li:hover {
     align-self: center;
     width: 20vw;
     height: 20vw;
-    background-color: #e0e0e0;
-    border: 1px solid black;
 }
 
 
@@ -282,9 +311,390 @@ li:hover {
 
 }
 
+.team-box .sprite-box {
+    width: 20vw;
+    height: 20vw;
+    margin: 0 auto;
+}
+
 .stats-box {
     background-color: white;
     outline: solid black 1px;
     width: 60vw;
 }
 
+.move-btn {
+    float: left;
+    float: top;
+    background-color: green;
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.move-btn:hover {
+    background-color: lawngreen;
+}
+
+.release-btn {
+    float: top;
+    float: right;
+    background-color: red;
+    margin: 0 auto;
+    width: 40%;
+    border-radius: 5px;
+}
+
+.release-btn:hover {
+    background-color: darkred;
+}
+
+
+
+/* for smaller screens */
+
+@media (max-width: 480px) {
+    .sprite-box {
+        margin-top: 7vh;
+        width: 80vw;
+        height: 80vw;
+    
+        background-color: lightblue;
+        border: solid black 1px;
+        outline: solid grey 3px;
+        
+        border-radius: 10px;
+    }
+    
+    .pkmn-img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .info-box {
+        display: flex;
+        width: 76vw;
+        height: 10vw;
+        justify-content: space-around;
+        background-color: white;
+        border: solid black 2px;
+        border-radius: 10px;
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+    }
+    
+    .info-box p {
+        display: flex;
+        font-size: 7vw;
+        height: 10vw;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .pokedex-main {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .description-box {
+        width: 80vw;
+        height: 40vw;
+        background-color: white;
+        outline: solid black 1px;
+        border-radius: 10px;
+        align-self: center;
+    }
+    
+    .description {
+        font-size: 5vw;
+    }
+    
+    .button-box {
+        display: flex;
+        justify-content: space-around;
+        height: 8vw;
+        width: 80vw;
+        margin-top: 2vh;
+    }
+    
+    .capture-btn {
+        background-color: lightblue;
+        color: black;
+        text-align: center;
+        border: solid black 1px;
+        border-radius: 10px;
+        width: 30vw;
+        height: 10vw;
+        font-size: 7vw;
+    }
+    
+    .capture-btn:hover {
+        background-color: darkblue;
+        color: white;
+        border: white;
+    } 
+    
+    .encounter-btn {
+        background-color: greenyellow;
+        color: black;
+        text-align: center;
+        border: solid black 1px;
+        border-radius: 10px;
+        width: 30vw;
+        height: 10vw;
+        font-size: 3vw;
+    }
+    
+    .encounter-btn:hover {
+        background-color: green;
+        color: white;
+        border: white;
+    } 
+    
+
+
+
+
+        /* ||TEAM CSS|| */
+
+
+
+    .team-main {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px; 
+    }
+
+
+    .team-name {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .team-name-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .team-name {
+        font-size: 5vh;
+        font-weight: bold;
+        margin: 0;
+        top: 2vh;
+        text-align: center;
+    }
+
+    .invisible {
+        display: none;
+    }
+    
+    .title-input {
+        font-size: 5vh;
+        font-weight: bold;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        border: 1px solid #ccc;
+        padding: 5px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .team-box {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr); 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10vw;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .team-box img {
+        align-self: center;
+        width: 30vw;
+        height: 30vw;
+        margin: 0 auto;
+    }
+
+
+
+    .team-box {
+        width: 70vw;
+        height: 90vh;
+        background-color: aqua;
+        outline: solid black 1px;
+
+    }
+
+    .team-box .sprite-box {
+        width: 30vw;
+        height: 30vw;
+        margin: 0 auto;
+    }
+
+    .stats-box {
+        background-color: white;
+        outline: solid black 1px;
+        width: 80vw;
+    }
+
+    .move-btn {
+        float: left;
+        float: top;
+        background-color: green;
+        margin: 0 auto;
+        width: 50%;
+        border-radius: 5px;
+    }
+
+    .move-btn:hover {
+        background-color: lawngreen;
+    }
+
+    .release-btn {
+        float: top;
+        float: right;
+        background-color: red;
+        margin: 0 auto;
+        width: 40%;
+        border-radius: 5px;
+    }
+
+    .release-btn:hover {
+        background-color: darkred;
+    }
+
+
+
+        /* ||BOX CSS||*/
+
+
+    .box-main {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px; 
+        font-size: 1.5rem;
+    }
+
+    .nav-bar button {
+        background-color: transparent;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        margin: 0 15px;
+    }
+
+    .nav-bar button:hover {
+        color: rgb(0, 195, 255);
+    }
+
+    .nav-bar h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .pokebox {
+        width: 80vw; 
+        height: 75vh; 
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: white;
+        display: grid;
+        grid-template-rows: repeat(9, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+    
+    }
+
+    .sprite {
+        height: 20vw;
+    }
+
+
+
+
+    /* ||HEADER CSS|| */
+    header {
+        height: 10vh;
+        width: 100vw;
+        background-color: red;
+        outline: solid black 1px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .header-links {
+        display: flex;
+        justify-content: space-evenly;
+        width: 25vw;
+    }
+    
+    ul {
+        list-style-type: none;
+        
+    }
+    
+    li {
+        width: 10vw;
+        height: 40px;
+        text-align: center;
+        background-color: white;
+        border: solid black 2px;
+        border-radius: 5px;
+    }
+    
+    li:hover {
+        
+        background-color: lightblue;
+        color: white;
+    }
+    
+    .header-links li a {
+        display: block; 
+        text-align: center; 
+        line-height: 40px;
+        font-size: 2.5vw;
+        text-decoration: none;
+        color: black;
+    }
+    
+    .header-links li a:hover {
+        color: white;
+    }
+    
+    .pokeball-icon {
+        height: 6vh;
+        align-self: left;
+    }
+    
+    .searchBar {
+        height: 4vh;
+        font-size: 3vh;
+        width: 40vw;
+    }
+    
+}
