@@ -189,7 +189,7 @@ export function searchbarActivate() {
         window.location.href = "./index.html"
       }
       // or just execute search if you're already there
-      else if (window.location.pathname == "/index.html") {
+      else if (window.location.pathname == "./index.html") {
         search();
       }
       
