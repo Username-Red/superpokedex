@@ -184,9 +184,9 @@ export function searchbarActivate() {
       const searchName = searchBar.value;
       localStorage.setItem("search-name", searchName);
       // check if you're on the right page
-      if (window.location.pathname != "/index.html") {
+      if (window.location.pathname != "./index.html") {
         // if you're on the wrong page move to the right page
-        window.location.href = "/index.html"
+        window.location.href = "./index.html"
       }
       // or just execute search if you're already there
       else if (window.location.pathname == "/index.html") {
@@ -353,6 +353,15 @@ export function movePkmn(pkmnListBox) {
       if (pkmnName != null && pkmnName != "##") {
         console.log(pkmnName);
         moveToBox(pkmnName);
+        window.location.reload();
+      }
+      
+    })
+
+    releaseBtn.addEventListener("click", () => {
+      let pkmnName = child.querySelector(".sprite").alt;
+      if (pkmnName != null && pkmnName != "##") {
+        removePokemon(pkmnName);
         window.location.reload();
       }
       
